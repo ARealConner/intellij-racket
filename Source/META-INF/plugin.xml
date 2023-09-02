@@ -1,6 +1,6 @@
 <idea-plugin>
-  <version>0.0.14</version>
-  <change-notes>&lt;h2&gt;0.0.14 - 2023-03-04&lt;/h2&gt;
+  <version>0.0.1</version>
+  <change-notes>&lt;h2&gt;0.0.1 - 2023-03-04&lt;/h2&gt;
 
 &lt;h3&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;Fixed wrongly claiming user did not install racket package&lt;/li&gt;&lt;/ul&gt;

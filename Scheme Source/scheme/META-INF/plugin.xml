@@ -1,0 +1,64 @@
+<idea-plugin url="https://github.com/Saigut/intellij-scheme">
+  <name>Scheme</name>
+  <id>intellij-scheme</id>
+  <description>Plugin for supporting Scheme programming language</description>
+  <category>Custom Languages</category>
+  <version>0.1.10</version>
+  <vendor url="https://saigut.com">Tony Saigut</vendor>
+  <depends>com.intellij.modules.lang</depends>
+  <depends>com.intellij.modules.platform</depends>
+  <idea-version since-build="103"/>
+
+  <change-notes><![CDATA[
+    1. Support resolving local symbols in lambda, let like forms and define forms<br>
+    2. Support resolving symbols imported from library of another file<br>
+    3. Improve structure view<br>
+    4. Improve Indentation<br>
+    5. Support .sls files<br>
+    6. Fix some bugs<br>
+    ]]>
+  </change-notes>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType name="Racket"
+              implementationClass="main.file.SchemeFileType" fieldName="SCHEME_FILE_TYPE"
+              language="Racket" extensions="ss;scm;sls"/>
+
+    <lang.parserDefinition language="Racket"
+                           implementationClass="main.parser.SchemeParserDefinition"/>
+    <lang.findUsagesProvider language="Racket"
+                             implementationClass="main.findUsages.SchemeFindUsagesProvider"/>
+    <lang.braceMatcher language="Racket"
+                       implementationClass="main.highlighter.SchemeBraceMatcher"/>
+    <lang.commenter language="Racket"
+                    implementationClass="main.highlighter.SchemeCommenter"/>
+    <lang.formatter language="Racket"
+                    implementationClass="main.formatter.SchemeFormattingModelBuilder"/>
+    <lang.psiStructureViewFactory language="Racket"
+                                  implementationClass="main.structure.SchemeStructureViewBuilderFactory"/>
+    <lang.foldingBuilder language="Racket"
+            implementationClass="main.fold.SchemeFoldingBuilder"/>
+
+    <gotoSymbolContributor implementation="main.gotoclass.SchemeGoToSymbolContributor"/>
+    <syntaxHighlighter key="Racket"
+                       implementationClass="main.highlighter.SchemeSyntaxHighlighter"/>
+    <annotator language="Racket" implementationClass="main.annotator.SchemeAnnotator"/>
+
+    <colorSettingsPage implementation="main.settings.colorScheme.SchemeColorsAndFontsPage"/>
+    <codeStyleSettingsProvider
+      implementation="main.settings.codeStyle.SchemeCodeStyleSettingsProvider"/>
+    <langCodeStyleSettingsProvider
+            implementation="main.settings.codeStyle.SchemeLanguageCodeStyleSettingsProvider"/>
+
+    <stubElementTypeHolder class="main.parser.AST"/>
+    <stubIndex implementation="main.psi.stubs.index.SchemeClassNameIndex"/>
+    <stubIndex implementation="main.psi.stubs.index.SchemeFullScriptNameIndex"/>
+
+    <projectService serviceInterface="main.psi.util.SchemePsiElementFactory"
+                    serviceImplementation="main.psi.util.SchemePsiElementFactoryImpl"/>
+  </extensions>
+
+  <actions>
+  </actions>
+
+</idea-plugin>
